@@ -19,36 +19,36 @@
         body { 
           font-family: 'Roboto', sans-serif; 
           line-height: 1.6; 
-          color: #9ca3af; /* gray-400 */
-          background-color: #030712; /* gray-950 */
+          color: #a1a1aa; /* zinc-400 */
+          background-color: #18181b; /* zinc-900 */
           -webkit-font-smoothing: antialiased; 
           -moz-osx-font-smoothing: grayscale; 
         }
         h1, h2, h3, h4, h5, h6 {
           font-family: 'Roboto Slab', serif;
-          color: #f9fafb; /* gray-50 */
+          color: #f4f4f5; /* zinc-50 */
           text-transform: uppercase;
           letter-spacing: 0.05em;
         }
-        .hero-bg { background: linear-gradient(rgba(3, 7, 18, 0.7), rgba(3, 7, 18, 0.7)), url('https://images.unsplash.com/photo-1564153278942-63670a41a39c?q=80&w=2070&auto=format&fit=crop&grayscale&brightness=0.6') no-repeat center center/cover; }
+        .hero-bg { background: linear-gradient(rgba(24, 24, 27, 0.7), rgba(24, 24, 27, 0.7)), url('https://i.ibb.co/v48V88M7/3metalroofstogetherwaterpaulsai.png') no-repeat center center/cover; }
         .testimonial-slide { display: none; animation: fadeIn 0.5s ease-in-out; }
         .testimonial-slide.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .page-header-bg { background-color: #111827; background-image: radial-gradient(#1f2937 1px, transparent 1px); background-size: 20px 20px; }
-        .content-card { background-color: #111827; border-color: #374151; }
-        .content-card-light { background-color: #1f2937; border-color: #4b5563; }
+        .page-header-bg { background-color: #27272a; background-image: radial-gradient(#3f3f46 1px, transparent 1px); background-size: 20px 20px; }
+        .content-card { background-color: #27272a; border-color: #52525b; }
+        .content-card-light { background-color: #3f3f46; border-color: #52525b; }
         .prose {
-            color: #d1d5db;
+            color: #d4d4d8;
         }
         .prose h3 {
-            color: #f9fafb;
+            color: #f4f4f5;
             margin-bottom: 1em;
         }
         .prose ul {
             list-style-position: inside;
         }
         .prose ul > li::marker {
-            color: #f59e0b;
+            color: #f97316; /* orange-600 */
         }
     </style>
 
@@ -66,19 +66,26 @@
         // --- MOCK DATA ---
         const siteData = {
           companyName: "Paul's Roofing",
-          tagline: "Southern New Brunswick's Premier Metal Roofing Specialist",
+          hero: {
+            headline: "THE LAST ROOF YOU'LL EVER NEED.",
+            tagline: "30 YEARS ON THE ROOF. READY FOR YOURS.",
+            subTagline: "Southern New Brunswick's Premier Metal Roofing Specialist."
+          },
           contact: {
             phone: "(506) 717-PAUL",
             phoneHref: "tel:+15067177285",
             email: "paul@paulsroofing.ca",
-            emergencyEmail: "247@paulsroofing.ca",
+            emergencyEmail: "hurry@paulsroofing.ca",
             address: "Quispamsis, New Brunswick",
             facebookUrl: "https://www.facebook.com/paulsroofnb",
           },
           branding: {
-              logoUrl: "https://i.ibb.co/27bdbCdp/D3-C774-CF-1-A36-40-AF-B385-07-CF5-DCC67-E4.png",
-              lunaiLogoUrl: "https://placehold.co/100x40/111827/FBBF24?text=lunAi",
-              placedLogoUrl: "https://placehold.co/100x40/111827/F9FAFB?text=plAced"
+              logoUrl: "https://i.ibb.co/fYBgrW4c/paulstransparent-1.png",
+              lunaiLogoUrl: "https://placehold.co/100x40/27272a/f97316?text=lunAi",
+              placedLogoUrl: "https://placehold.co/100x40/27272a/f9fafb?text=plAced"
+          },
+          about: {
+              ownerImageUrl: "https://i.ibb.co/rG46r7gm/0-F6-B0367-BF06-4-BFB-88-BC-E79367-BD3-F9-E.png"
           },
           nav: {
             main: [
@@ -86,13 +93,15 @@
               { href: '/what-we-do', label: 'Services', icon: 'WrenchIcon' },
               { href: '/where-we-do-it', label: 'Our Work', icon: 'MapPinIcon' },
               { href: '/ask-your-neighbour', label: 'About Us', icon: 'UsersIcon' },
-              { href: '/handbook', label: "Owner's Handbook", icon: 'BookOpenIcon'},
+              { href: '/handbook', label: "Homeowner's Handbook", icon: 'BookOpenIcon'},
             ],
             footer: [
               { href: '/what-we-do', label: 'Services' },
               { href: '/where-we-do-it', label: 'Our Work' },
               { href: '/ask-your-neighbour', label: 'About Us' },
-              { href: '/handbook', label: "Owner's Handbook"},
+              { href: '/handbook', label: "Homeowner's Handbook"},
+              { href: '/financing', label: 'Financing'},
+              { href: '/bill-pay', label: 'Pay Bill'},
               { href: '/get-quote', label: 'Get a Quote' },
             ]
           },
@@ -102,9 +111,61 @@
             { text: "30 years experience really shows. Our shingle roof looks amazing and hasn't had a single issue in 3 years. Paul's is the best!", author: "Jennifer R., Hampton, NB" },
           ],
           services: [
-            { id: 'metal', title: 'PREMIUM METAL ROOFING', icon: '🏠', image: 'https://images.unsplash.com/photo-1564153278942-63670a41a39c?q=80&w=2070&auto=format&fit=crop', desc: "We specialize in high-quality metal roofing systems sourced from industry leaders like Community Metal and Dairy Town Exteriors. These systems offer unparalleled durability, longevity, and resistance to harsh Atlantic Canadian weather.", features: ["Superior resistance to extreme weather", "Exceptional longevity (50+ years)", "Energy-efficient, reflecting solar heat", "Low maintenance and fire-resistant", "Increases home value significantly"], isFeatured: true, warranty: { title: "Industry-Leading Warranties", points: ["40-Year Paint Warranty on most colours, ensuring your roof won't chip, crack, or peel.", "Lifetime Material Warranty on steel roofing panels against defects.", "Our own comprehensive Workmanship Guarantee on all installations."] }, colors: [{name: 'Black', hex: '#2C3A47'},{name: 'Charcoal', hex: '#535C68'},{name: 'Graphite Grey', hex: '#57606f'},{name: 'Bright Red', hex: '#E74C3C'},{name: 'Forest Green', hex: '#228B22'},{name: 'Galvalume', hex: '#BDC3C7'},{name: 'Ocean Blue', hex: '#3498DB'},{name: 'White', hex: '#FDFEFE'}] },
-            { id: 'shingle', title: 'ARCHITECTURAL SHINGLES', icon: '🔧', image: 'https://images.unsplash.com/photo-1599751449208-e327d783811b?q=80&w=2070&auto=format&fit=crop', desc: "We install a wide range of high-performance architectural shingles from Canada's top manufacturers, including IKO and BP. These products offer an excellent combination of durability, curb appeal, and value.", features: ["Proven durability & weather resistance", "Wide range of designer colors & styles", "Cost-effective roofing solution", "Excellent manufacturer warranties"], suppliers: [{ name: 'IKO', logoUrl: 'https://www.iko.com/na/wp-content/themes/iko/dist/images/logo.svg', visualizerUrl: 'https://www.iko.com/na/roofviewer/' }, { name: 'BP Canada', logoUrl: 'https://bpcan.com/wp-content/themes/bp-canada/img/logo-bp.svg', visualizerUrl: 'https://bpcan.com/visualizer/' }] },
-            { id: 'exterior', title: 'EXTERIOR MAINTENANCE', icon: '🔨', image: 'https://images.unsplash.com/photo-1600585152225-357245853333?q=80&w=2070&auto=format&fit=crop', desc: "Beyond roofing, we offer extensive exterior maintenance and remodeling services to ensure your entire home is protected and looks its best, preventing costly future damages.", features: ["Siding repair and installation", "Gutter cleaning and repair", "Fascia and soffit maintenance", "Comprehensive exterior inspections"] },
+            { 
+              id: 'metal', 
+              title: 'PREMIUM METAL ROOFING', 
+              icon: '🏠', 
+              image: 'https://i.ibb.co/HDPh29G8/an-assortment-of-different-colour-metal-roofing.jpg',
+              desc: "We specialize in high-quality metal roofing systems sourced from industry leaders like Community Metal and Dairy Town Exteriors. These systems offer unparalleled durability, longevity, and resistance to harsh Atlantic Canadian weather.",
+              features: ["Superior resistance to extreme weather", "Exceptional longevity (50+ years)", "Energy-efficient, reflecting solar heat", "Low maintenance and fire-resistant", "Increases home value significantly"],
+              isFeatured: true,
+              warranty: {
+                title: "Industry-Leading Warranties",
+                points: [
+                    "40-Year Paint Warranty on most colours, ensuring your roof won't chip, crack, or peel.",
+                    "Lifetime Material Warranty on steel roofing panels against defects.",
+                    "Our own comprehensive Workmanship Guarantee on all installations."
+                ]
+              },
+              colors: [
+                {name: 'Black', hex: '#2C3A47'},
+                {name: 'Charcoal', hex: '#535C68'},
+                {name: 'Graphite Grey', hex: '#57606f'},
+                {name: 'Bright Red', hex: '#E74C3C'},
+                {name: 'Forest Green', hex: '#228B22'},
+                {name: 'Galvalume', hex: '#BDC3C7'},
+                {name: 'Ocean Blue', hex: '#3498DB'},
+                {name: 'White', hex: '#FDFEFE'}
+              ]
+            },
+            { 
+              id: 'shingle', 
+              title: 'ARCHITECTURAL SHINGLES', 
+              icon: '🔧', 
+              image: 'https://i.ibb.co/TMwqfNTd/modern-roof-with-solar-shingles-from-tesla.jpg',
+              desc: "We install a wide range of high-performance architectural shingles from Canada's top manufacturers, including IKO and BP. These products offer an excellent combination of durability, curb appeal, and value.",
+              features: ["Proven durability & weather resistance", "Wide range of designer colors & styles", "Cost-effective roofing solution", "Excellent manufacturer warranties"],
+              suppliers: [
+                  { name: 'IKO', visualizerUrl: 'https://www.iko.com/na/roofviewer/' },
+                  { name: 'BP Canada', visualizerUrl: 'https://bpcan.com/visualizer/' }
+              ]
+            },
+            { 
+              id: 'exterior', 
+              title: 'EXTERIOR MAINTENANCE', 
+              icon: '🔨', 
+              image: 'https://i.ibb.co/sJytcryp/IMG-5775.jpg',
+              desc: "Beyond roofing, we offer extensive exterior maintenance and remodeling services to ensure your entire home is protected and looks its best, preventing costly future damages.",
+              features: ["Siding repair and installation", "Gutter cleaning and repair", "Fascia and soffit maintenance", "Comprehensive exterior inspections"],
+            },
+             { 
+              id: 'chimney', 
+              title: 'CHIMNEYS & MORE', 
+              icon: '🧱', 
+              image: 'https://images.unsplash.com/photo-1605146234333-259165b4515a?q=80&w=1974&auto=format&fit=crop',
+              desc: "Comprehensive repairs for chimneys, flashing, and vents to keep your home dry and secure from the elements.",
+              features: ["Chimney inspection and repair", "Flashing installation & waterproofing", "Vent and skylight repair", "Emergency leak sealing"],
+            },
           ],
            comparisonData: [
             { feature: 'Lifespan', metal: '50-70+ Years', shingle: '15-30 Years', winner: 'metal' },
@@ -114,10 +175,12 @@
             { feature: 'Energy Efficiency', metal: 'High (Reflects Heat)', shingle: 'Moderate', winner: 'metal' },
           ],
           portfolio: [
-            { title: "Sleek Metal Roof", location: "Quispamsis, NB", image: "https://images.unsplash.com/photo-1564153278942-63670a41a39c?q=80&w=2070&auto=format&fit=crop" },
-            { title: "Architectural Shingles", location: "Saint John, NB", image: "https://images.unsplash.com/photo-1599751449208-e327d783811b?q=80&w=2070&auto=format&fit=crop" },
-            { title: "Custom Flashing Detail", location: "Hampton, NB", image: "https://images.unsplash.com/photo-1605146234333-259165b4515a?q=80&w=1974&auto=format&fit=crop" },
-            { title: "Full Exterior Upgrade", location: "Rothesay, NB", image: "https://images.unsplash.com/photo-1600585152225-357245853333?q=80&w=2070&auto=format&fit=crop" },
+            { title: "Storm-Rated Metal Installation", location: "Rothesay, NB", image: "https://i.ibb.co/bRH6myv0/modern-metal-roof-bright-colours-storm-pounding.jpg" },
+            { title: "Architectural Metal Roof", location: "Hampton, NB", image: "https://i.ibb.co/r2vcXKrg/modern-metal-roof-1.jpg" },
+            { title: "Commercial Metal Roofing", location: "Saint John, NB", image: "https://i.ibb.co/QvVjPtnn/modern-metal-roof.jpg" },
+            { title: "Rustic-Style Metal Roof", location: "Kingston Peninsula, NB", image: "https://i.ibb.co/Qw8SFCG/rustic-metal-roof.jpg" },
+            { title: "High-Efficiency Shingles", location: "Quispamsis, NB", image: "https://i.ibb.co/TMwqfNTd/modern-roof-with-solar-shingles-from-tesla.jpg" },
+            { title: "Emergency Tarp & Repair", location: "Sussex, NB", image: "https://i.ibb.co/tPDWd1ZD/IMG-6799.jpg" },
           ],
           processSteps: [
             {step: 1, title: 'Consultation', desc: 'We discuss your needs and assess your property.'},
@@ -126,10 +189,10 @@
             {step: 4, title: 'Final Walk-through', desc: 'We ensure your complete satisfaction with the final result.'}
           ],
           whyUs: [
-            { icon: 'AwardIcon', title: 'Metal Roofing Specialists', desc: 'Decades of hands-on expertise in every project we undertake.' },
-            { icon: 'ShieldIcon', title: 'Licensed & Insured', desc: 'Complete peace of mind knowing you are fully protected.' },
-            { icon: 'UsersIcon', title: 'Locally Owned', desc: 'Proudly serving our neighbours in Southern New Brunswick.' },
-            { icon: 'StarIcon', title: 'Premium Materials', desc: 'Sourcing from leaders like Community Metal & Dairy Town Exteriors.' },
+            { icon: 'AwardIcon', title: 'Metal Roofing Specialists', desc: 'We don\'t just install metal roofs; we master them. It\'s our primary focus and our deepest area of expertise.' },
+            { icon: 'ShieldIcon', title: 'Licensed & Insured', desc: 'Your investment is protected. We carry full liability insurance and WCB coverage for our entire crew.' },
+            { icon: 'UsersIcon', title: 'Locally Owned', desc: 'We\'re your neighbours. We understand the unique challenges of New Brunswick weather and build roofs to withstand it.' },
+            { icon: 'StarIcon', title: 'Premium Materials', desc: 'We only use materials we\'d trust on our own homes, sourced from industry leaders like Community Metal & Dairy Town Exteriors.' },
           ],
           handbookArticles: [
               { slug: 'choosing-metal-roof-color', title: "How to Choose the Perfect Metal Roof Color for Your Home", excerpt: "Your roof color has a huge impact on curb appeal. Here are our top tips for selecting a color that complements your home's style and surroundings.", date: "July 12, 2025" },
@@ -155,6 +218,9 @@
           BookOpenIcon: () => <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>,
           LockIcon: () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>,
           ExternalLinkIcon: () => <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>,
+          UploadCloudIcon: () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M12 12v9"/><path d="m16 16-4-4-4 4"/></svg>,
+          CreditCardIcon: () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>,
+          DollarSignIcon: () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>,
         };
         const Icon = ({ name, ...props }) => {
           const IconComponent = icons[name];
@@ -271,8 +337,9 @@
                 <div>
                     <section className="hero-bg min-h-screen flex items-center justify-center text-center p-4 pt-32">
                         <div className="bg-black/50 backdrop-blur-sm p-8 md:p-12 rounded-lg shadow-2xl max-w-3xl text-white">
-                            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight">THE LAST ROOF YOU'LL EVER NEED.</h1>
-                            <p className="text-lg md:text-xl mt-4 text-gray-200 max-w-2xl mx-auto font-sans italic tracking-wider">{siteData.tagline}</p>
+                            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight">{siteData.hero.headline}</h1>
+                            <p className="text-lg md:text-xl mt-4 text-amber-400 font-semibold tracking-wider">{siteData.hero.tagline}</p>
+                            <p className="text-md md:text-lg mt-2 text-gray-300 max-w-2xl mx-auto font-sans normal-case tracking-normal">{siteData.hero.subTagline}</p>
                             <div className="mt-8"><Link href="/get-quote" className="inline-block bg-gradient-to-r from-amber-500 to-amber-400 text-gray-900 font-bold text-lg px-8 py-3 rounded-md transition-all duration-300 hover:scale-105 shadow-lg hover:from-amber-400 hover:to-amber-500">GET YOUR FREE ESTIMATE</Link></div>
                         </div>
                     </section>
@@ -326,9 +393,8 @@
                     <div className="flex justify-center items-center gap-8">
                         {suppliers.map(supplier => (
                             <div key={supplier.name} className="text-center">
-                                <img src={supplier.logoUrl} alt={`${supplier.name} logo`} className="h-8 mx-auto mb-2 brightness-0 invert" />
-                                <a href={supplier.visualizerUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-sm font-semibold text-amber-400 hover:text-amber-300">
-                                    Try Visualizer <Icon name="ExternalLinkIcon" />
+                                <a href={supplier.visualizerUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-semibold text-amber-400 hover:text-amber-300">
+                                    {supplier.name} Visualizer <Icon name="ExternalLinkIcon" />
                                 </a>
                             </div>
                         ))}
@@ -425,7 +491,7 @@
             <PageShell title="ABOUT PAUL'S ROOFING" subtitle="A LEGACY OF QUALITY, BUILT ON 30 YEARS OF TRUST AND EXPERIENCE.">
                 <div className="space-y-16">
                     <AnimatedSection className="content-card p-8 md:p-12 rounded-lg shadow-lg border"><div className="flex flex-wrap md:flex-nowrap gap-10 items-center"><div className="w-full md:w-1/3"><img src={siteData.about.ownerImageUrl} alt="Paul, owner of Paul's Roofing" className="rounded-lg shadow-md w-full" /></div><div className="w-full md:w-2/3"><h2 className="text-2xl font-bold text-amber-400 mb-4">OUR STORY</h2><div className="prose prose-invert max-w-none text-gray-300"><p>For over 30 years, Paul's Roofing has been a trusted name in the roofing industry across Southern New Brunswick. Founded on principles of integrity, unmatched craftsmanship, and genuine customer care, we have built our reputation one roof at a time.</p><p>Our passion is providing peace of mind and protecting families' most valuable assets. Every project is approached with the precision and attention to detail that only decades of hands-on experience can provide.</p></div></div></div></AnimatedSection>
-                    <AnimatedSection><h2 className="text-3xl font-bold text-white text-center mb-12">WHY WE'RE DIFFERENT</h2><div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">{siteData.whyUs.map(item => <div key={item.title} className="content-card p-6 rounded-lg shadow-lg border"><div className="text-amber-400 w-12 h-12 flex items-center justify-center mx-auto mb-4"><Icon name={item.icon} /></div><h3 className="font-semibold text-lg text-white mb-2">{item.title}</h3><p className="text-sm text-gray-400">{item.desc}</p></div>)}</div></AnimatedSection>
+                    <AnimatedSection><h2 className="text-3xl font-bold text-white text-center mb-12">THE PAUL'S ROOFING ADVANTAGE</h2><div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">{siteData.whyUs.map(item => <div key={item.title} className="content-card p-6 rounded-lg shadow-lg border"><div className="text-amber-400 w-12 h-12 flex items-center justify-center mx-auto mb-4"><Icon name={item.icon} /></div><h3 className="font-semibold text-lg text-white mb-2">{item.title}</h3><p className="text-sm text-gray-400">{item.desc}</p></div>)}</div></AnimatedSection>
                     <AnimatedSection><h2 className="text-3xl font-bold text-white text-center mb-8">OUR PROCESS: SIMPLE & TRANSPARENT</h2><div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">{siteData.processSteps.map(item => <div key={item.step} className="content-card p-6 rounded-lg shadow-lg border"><div className="bg-amber-500 text-gray-900 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-xl">{item.step}</div><h3 className="font-semibold text-lg text-white mb-2">{item.title}</h3><p className="text-sm text-gray-400">{item.desc}</p></div>)}</div></AnimatedSection>
                 </div>
                 <div className="mt-20"><CtaBanner /></div>
@@ -434,7 +500,11 @@
         const ContactPage = () => {
             const [step, setStep] = React.useState(1);
             const [formData, setFormData] = React.useState({ projectType: '', roofType: '', description: '', firstName: '', lastName: '', email: '', phone: '', photo: null });
-            const fileInputRef = React.useRef(null);
+            
+            const handleChange = (e) => {
+                const { name, value } = e.target;
+                setFormData(prev => ({ ...prev, [name]: value }));
+            };
 
             const handleFileChange = (e) => {
                 if (e.target.files && e.target.files[0]) {
@@ -442,12 +512,31 @@
                 }
             };
 
-            const handleSubmit = (e) => { e.preventDefault(); console.log(formData); alert('Thank you for your request! This is a demo, but in a real site, your quote request would be sent to Paul.'); setStep(1); setFormData({ projectType: '', roofType: '', description: '', firstName: '', lastName: '', email: '', phone: '', photo: null }); };
+            const handleSubmit = (e) => { 
+                e.preventDefault(); 
+                setStep(4); 
+            };
             const nextStep = () => setStep(s => s + 1);
             const prevStep = () => setStep(s => s - 1);
 
             const projectTypes = [{id: 'new-roof', label: 'New Roof'}, {id: 'replacement', label: 'Replacement'}, {id: 'repair', label: 'Repair/Leak'}, {id: 'inspection', label: 'Inspection'}];
             const roofTypes = [{id: 'metal', label: 'Metal'}, {id: 'shingles', label: 'Shingles'}, {id: 'unsure', label: 'Unsure'}];
+            
+            if (step === 4) {
+                return (
+                    <PageShell title="REQUEST RECEIVED">
+                        <div className="content-card p-8 rounded-lg shadow-lg max-w-4xl mx-auto border text-center relative overflow-hidden">
+                             <div className="absolute inset-0 bg-no-repeat bg-center bg-cover opacity-5" style={{backgroundImage: `url(${siteData.branding.logoUrl})`}}></div>
+                            <Icon name="CheckIcon" className="mx-auto h-16 w-16 text-green-400" />
+                            <h2 className="mt-4 text-2xl font-bold text-white">THANK YOU, {formData.firstName.toUpperCase()}!</h2>
+                            <p className="mt-2 text-gray-300">Your project request has been submitted. We will review the details and contact you at <strong>{formData.email}</strong> or <strong>{formData.phone}</strong> within one business day.</p>
+                            <div className="mt-6">
+                                <Link href="/" className="bg-amber-500 text-gray-900 font-bold px-6 py-2 rounded-md hover:bg-amber-400">RETURN HOME</Link>
+                            </div>
+                        </div>
+                    </PageShell>
+                )
+            }
 
             return (<PageShell title="GET A FREE QUOTE" subtitle="OUR INTERACTIVE PROJECT CONFIGURATOR MAKES GETTING AN ESTIMATE QUICK AND EASY.">
                 <div className="content-card p-8 rounded-lg shadow-lg max-w-4xl mx-auto border">
@@ -468,7 +557,7 @@
         };
         const SimplePage = ({ title, children }) => (<PageShell title={title}><div className="content-card p-8 md:p-12 rounded-lg shadow-lg max-w-4xl mx-auto border"><div className="prose prose-invert max-w-none text-gray-300">{children}</div></div></PageShell>);
         const HandbookPage = () => (
-            <PageShell title="OWNER'S HANDBOOK" subtitle="EXPERT ADVICE AND INSIGHTS FOR NEW BRUNSWICK HOMEOWNERS.">
+            <PageShell title="HOMEOWNER'S HANDBOOK" subtitle="EXPERT ADVICE AND INSIGHTS FOR NEW BRUNSWICK HOMEOWNERS.">
                 <div className="mb-12 text-center">
                     <h3 className="text-lg text-gray-400 font-sans normal-case tracking-normal">PRESENTED IN PARTNERSHIP WITH</h3>
                     <img src={siteData.branding.placedLogoUrl} alt="plAced Logo" className="h-10 mx-auto mt-2" />
@@ -492,25 +581,26 @@
         const ProjectHQPage = () => (
             <div className="min-h-screen flex items-center justify-center bg-gray-900 pt-20">
                 <AnimatedSection className="w-full max-w-md">
-                    <form className="content-card shadow-lg rounded-lg p-8 space-y-6 border">
-                        <div className="text-center">
+                    <form className="content-card shadow-lg rounded-lg p-8 space-y-6 border relative overflow-hidden">
+                        <div className="absolute inset-0 bg-no-repeat bg-center bg-cover opacity-5" style={{backgroundImage: `url(${siteData.branding.logoUrl})`}}></div>
+                        <div className="text-center relative">
                             <Icon name="LockIcon" className="mx-auto h-12 w-12 text-amber-400" />
                             <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-white">PROJECT HQ</h2>
                             <p className="mt-2 text-center text-sm text-gray-400">AUTHORIZED ACCESS ONLY</p>
                         </div>
-                        <div>
+                        <div className="relative">
                             <label htmlFor="email" className="block text-sm font-medium text-gray-300">USERNAME</label>
                             <div className="mt-1">
                                 <input id="email" name="email" type="email" required className="w-full bg-gray-900 text-gray-300 p-3 rounded-md border border-gray-600 focus:border-amber-500 focus:ring-1 focus:ring-amber-500 outline-none" />
                             </div>
                         </div>
-                        <div>
+                        <div className="relative">
                             <label htmlFor="password"className="block text-sm font-medium text-gray-300">PASSWORD</label>
                             <div className="mt-1">
                                 <input id="password" name="password" type="password" required className="w-full bg-gray-900 text-gray-300 p-3 rounded-md border border-gray-600 focus:border-amber-500 focus:ring-1 focus:ring-amber-500 outline-none" />
                             </div>
                         </div>
-                        <div>
+                        <div className="relative">
                             <button type="submit" className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-bold text-gray-900 bg-amber-500 hover:bg-amber-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-amber-500">
                                 SECURE LOGIN
                             </button>
@@ -518,6 +608,57 @@
                     </form>
                 </AnimatedSection>
             </div>
+        );
+        const FinancingPage = () => (
+            <PageShell title="FINANCING OPTIONS" subtitle="MAKING YOUR ESSENTIAL ROOFING PROJECT AFFORDABLE.">
+                <div className="content-card p-8 md:p-12 rounded-lg shadow-lg max-w-4xl mx-auto border prose prose-invert max-w-none text-gray-300">
+                    <p>A new roof is one of the most important investments you can make in your home. We believe that financial constraints shouldn't prevent you from getting the safe, reliable roof you need. That's why we've partnered with trusted financial institutions to offer flexible financing options tailored to your budget.</p>
+                    <h3>OUR PARTNERS</h3>
+                    <p>We work with industry leaders to provide you with competitive rates and simple application processes.</p>
+                    <div className="flex gap-8 items-center not-prose">
+                        <a href="#" className="flex-1 text-center p-6 bg-gray-800 rounded-lg border border-gray-700 hover:border-amber-500 transition-colors">
+                           <p className="font-bold text-white">Stripe</p>
+                        </a>
+                        <a href="#" className="flex-1 text-center p-6 bg-gray-800 rounded-lg border border-gray-700 hover:border-amber-500 transition-colors">
+                           <p className="font-bold text-white">Financeit</p>
+                        </a>
+                    </div>
+                    <h3>FREQUENTLY ASKED QUESTIONS</h3>
+                    <dl>
+                        <dt className="font-semibold text-amber-400">What are the benefits of financing?</dt>
+                        <dd className="mb-4">Financing allows you to get your necessary roof replacement or repair now, while paying over time in manageable monthly installments. This protects your home from further damage without a large upfront payment.</dd>
+                        
+                        <dt className="font-semibold text-amber-400">How do I apply?</dt>
+                        <dd>The process is simple. During your free estimate, just let us know you're interested in financing. We can guide you through the application process with our partners.</dd>
+                    </dl>
+                </div>
+            </PageShell>
+        );
+
+        const BillPayPage = () => (
+            <PageShell title="PAY YOUR BILL" subtitle="A SECURE AND CONVENIENT WAY TO PAY YOUR INVOICE.">
+                <div className="content-card p-8 md:p-12 rounded-lg shadow-lg max-w-4xl mx-auto border">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <h3 className="text-2xl font-bold text-amber-400">ONLINE PAYMENT PORTAL</h3>
+                            <p className="mt-2 text-gray-400">Please enter your invoice number and payment amount below. All transactions are securely processed through Stripe.</p>
+                        </div>
+                        <form className="space-y-4">
+                            <div>
+                                <label htmlFor="invoice-number" className="block text-sm font-medium text-gray-300">INVOICE NUMBER</label>
+                                <input type="text" id="invoice-number" className="w-full bg-gray-900 text-gray-300 p-3 mt-1 rounded-md border border-gray-600 focus:border-amber-500 focus:ring-1 focus:ring-amber-500 outline-none" />
+                            </div>
+                            <div>
+                                <label htmlFor="payment-amount" className="block text-sm font-medium text-gray-300">PAYMENT AMOUNT</label>
+                                <input type="text" id="payment-amount" className="w-full bg-gray-900 text-gray-300 p-3 mt-1 rounded-md border border-gray-600 focus:border-amber-500 focus:ring-1 focus:ring-amber-500 outline-none" />
+                            </div>
+                            <button type="submit" className="w-full flex justify-center items-center gap-2 py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-bold text-gray-900 bg-amber-500 hover:bg-amber-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-amber-500">
+                                <Icon name="CreditCardIcon" /> PROCEED TO SECURE PAYMENT
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </PageShell>
         );
 
 
@@ -536,6 +677,8 @@
                   <Route path="/handbook" component={HandbookPage} />
                   <Route path="/privacy" component={PrivacyPolicyPage} />
                   <Route path="/hq" component={ProjectHQPage} />
+                  <Route path="/financing" component={FinancingPage} />
+                  <Route path="/bill-pay" component={BillPayPage} />
                   <Route component={NotFoundPage} />
                 </Switch>
               </main>
